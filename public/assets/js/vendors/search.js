@@ -1,0 +1,1 @@
+function searchWord(){const o=document.getElementById("globalSearchInput").value.toLowerCase();document.querySelectorAll(".modal-body li").forEach(e=>{e.textContent.toLowerCase().includes(o)?e.style.display="":e.style.display="none"})}

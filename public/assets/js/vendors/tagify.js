@@ -1,0 +1,1 @@
+const tagInputs=document.querySelectorAll("input[name=tags]");tagInputs.forEach(t=>{new Tagify(t)});

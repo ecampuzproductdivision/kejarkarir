@@ -1,59 +1,201 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Kejar Karir
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi manajemen akses berbasis **Laravel 12**, **Vite**, dan **Tailwind CSS v4** — dilengkapi dengan sistem autentikasi, manajemen Role, Permission, Menu, dan User.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Persyaratan Sistem (Prerequisites)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Sebelum memulai instalasi, pastikan sistem Anda telah terpasang software berikut:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+*   **PHP** `>= 8.2`
+*   **Composer** (Manajer dependensi PHP)
+*   **Node.js** (Rekomendasi versi LTS terbaru) & **NPM**
+*   **MySQL** `>= 5.7` atau **MariaDB** (database default yang digunakan)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## ⚡ Cara Instalasi Cepat (Automated Setup)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Proyek ini dilengkapi dengan skrip setup otomatis yang didefinisikan dalam `composer.json`.
 
-## Laravel Sponsors
+**1. Clone repository:**
+```bash
+git clone <url-repository>
+cd <nama-folder>
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**2. Salin dan sesuaikan file environment:**
+```bash
+cp .env.example .env
+```
+Buka `.env` dan sesuaikan konfigurasi database:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=kejarkarir
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-### Premium Partners
+**3. Instal dependensi Composer, lalu jalankan setup otomatis:**
+```bash
+composer install
+composer run setup
+```
+*Skrip `composer run setup` secara otomatis akan:*
+* Menghasilkan Application Key (`php artisan key:generate`).
+* Menjalankan migrasi database (`php artisan migrate --force`).
+* Menginstal dependensi Node.js (`npm install`).
+* Membangun aset frontend (`npm run build`).
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🛠️ Cara Instalasi Manual (Step by Step)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Jika Anda ingin melakukan instalasi langkah demi langkah secara manual:
 
-## Code of Conduct
+### 1. Clone Repository
+```bash
+git clone <url-repository>
+cd <nama-folder>
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 2. Duplikasi File Environment
+```bash
+# Linux / macOS / Git Bash:
+cp .env.example .env
 
-## Security Vulnerabilities
+# Windows PowerShell:
+Copy-Item .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Instal Dependensi Backend
+```bash
+composer install
+```
 
-## License
+### 4. Generate Application Key
+```bash
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 5. Konfigurasi Database
+
+Buka file `.env` dan sesuaikan dengan konfigurasi MySQL Anda:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=kejarkarir
+DB_USERNAME=root
+DB_PASSWORD=
+```
+> Pastikan database `kejarkarir` sudah dibuat di MySQL sebelum menjalankan migrasi.
+
+### 6. Jalankan Migrasi & Seeder
+```bash
+php artisan migrate --seed
+```
+
+### 7. Instal Dependensi Frontend & Compile Aset
+```bash
+npm install
+npm run build
+```
+
+---
+
+## 🚀 Menjalankan Aplikasi
+
+Aplikasi ini menggunakan `npx concurrently` untuk menjalankan server backend PHP, queue worker, Laravel Pail (logs), dan Vite dev server secara bersamaan dengan satu perintah mudah:
+
+```bash
+composer run dev
+```
+
+Atau, jika Anda ingin menjalankannya secara manual di terminal terpisah:
+
+*   **Menjalankan Server Backend PHP:**
+    ```bash
+    php artisan serve
+    ```
+*   **Menjalankan Vite Asset Compiler (Hot Reload):**
+    ```bash
+    npm run dev
+    ```
+
+Aplikasi default dapat diakses melalui browser pada alamat: **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
+
+---
+
+## 🔑 Kredensial Akun Bawaan (Default Credentials)
+
+Setelah `php artisan migrate --seed` berhasil dijalankan:
+
+### 👤 Super Admin
+*   **Email:** `test@example.com`
+*   **Password:** `password`
+*   **Role:** `SUPER_ADMIN` — akses penuh ke seluruh fitur
+
+### 🏢 Company Partner (Akun Dummy)
+*   Terdapat **3 akun dummy** yang dibuat secara acak oleh factory.
+*   **Role:** `COMPANY_PARTNER`
+*   **Password:** `password`
+
+---
+
+## 📂 Fitur Aplikasi
+
+| Fitur | URL |
+|---|---|
+| Dashboard | `/dashboard` |
+| Manajemen Role | `/roles` |
+| Manajemen User | `/users` |
+| Manajemen Menu | `/menus` |
+| Manajemen Permission | `/permissions` |
+
+---
+
+## 🗂️ Struktur Direktori Utama
+
+```
+├── app/
+│   ├── Http/Controllers/   # AuthController, MenuController, PermissionController, RoleController, UserController
+│   └── Models/             # User, Role, Permission, Menu
+├── database/
+│   ├── migrations/         # Skema tabel database
+│   └── seeders/            # DatabaseSeeder, MenuSeeder, PermissionSeeder
+├── resources/
+│   ├── css/app.css         # Entry point Tailwind CSS v4
+│   ├── js/app.js           # Entry point JavaScript
+│   └── views/              # Blade templates
+├── routes/web.php          # Definisi route aplikasi
+└── vite.config.js          # Konfigurasi Vite + Tailwind CSS v4
+```
+
+---
+
+## 🔒 Catatan Keamanan
+
+*   File `.env` **tidak boleh** di-commit ke Git. Selalu gunakan `.env.example` sebagai template.
+*   Ganti semua kredensial default sebelum deploy ke production.
+*   Set `APP_ENV=production` dan `APP_DEBUG=false` di environment production.
+
+---
+
+## 📦 Perintah Berguna
+
+```bash
+# Jalankan unit test
+composer run test
+
+# Clear semua cache
+php artisan optimize:clear
+
+# Cache konfigurasi (untuk production)
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
